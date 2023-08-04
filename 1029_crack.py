@@ -27,12 +27,12 @@ hash = "UmTGMgTFbA35+PSgMOoZ2ToPpAK+awC010ZOYWQQIfc="
 wordlist = "/mnt/c/Tools/1029crack/rockyou.txt" # Dear God don't actually use this, it's just here for a placeholder
 
 RED='\033[1;31m'
-GRN='\033[1;32m'
+GRN=''
 YEL='\033[1;33m'
 BLU='\033[1;34m'
 GRY='\033[1;90m'
 LRD='\033[1;41m' # Red Background, White Letters
-NC='\033[0m' # No Color
+NC='' # No Color
 
 if str(base64.b64encode(base64.b64decode(hash)), 'utf-8') == hash:
 	pass;
@@ -48,6 +48,7 @@ with open(wordlist) as f:
 		line = line.strip()
 		try: # Found a string with invalid encoding breaks the script. Toss the user an error and containue
 			username = line.encode('utf-16le')
+			username = username.lower() # assume the user typed in the name without capitlization
 		except:
 			print(LRD + "An error occured with string:" + NC + " " + line + " " + LRD + "Continuing..." + NC)
 			traceback.print_exc()
